@@ -56,7 +56,7 @@ apt-get update > /dev/null 2>&1
 
 sleep ".01"
 prg_bar 30 1
-Update
+Update()
 prg_bar 30 10
 
 
