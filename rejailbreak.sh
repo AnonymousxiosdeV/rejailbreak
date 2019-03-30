@@ -53,7 +53,7 @@ function Update ()
 apt-get update >> /dev/null 2>&1
 }
 
-function Apt()
+function Apt ()
 { 
 apt-get install
 }
