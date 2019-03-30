@@ -164,6 +164,16 @@ sleep ".001"
 prg_bar 30 1
 Update
 prg_bar 30 10
+
+for i in {10..100}
+do 
+prg_bar 30 $i
+done
+
+EOF 
+
+
+Flex3beta
 Apt Flex3beta
 prg_bar 30 11
 adv-cmds
