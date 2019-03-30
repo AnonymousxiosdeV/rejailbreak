@@ -58,6 +58,8 @@ function Apt ()
 apt-get install
 }
 
+Null=">> /dev/null 2>&1"
+
 Array="apt1.4
 apt7
 basic-cmds
@@ -74,8 +76,6 @@ com.repo.xarold.com.cocoatop64
 com.repo.xarold.com.cydown
 com.rpetrich.rocketbootstrap
 com.tigisoftware.appdatamanager
-coreutils
-coreutils-bin
 curl
 cydia.com.iphonecake.appcake6
 cydia.kiiimo.org.filzafilemanager
@@ -96,7 +96,6 @@ grep
 gzip
 htop
 idv.aqua.igameguardian.ios12
-jailbreak-resources
 jp.ashikase.libpackageinfo
 jp.ashikase.techsupport
 ld64
@@ -156,7 +155,8 @@ ws.hbang.common
 xar
 xz
 zip
-Flex3beta"
+Flex3beta
+adv-cmds"
 
 
 
