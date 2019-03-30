@@ -53,16 +53,21 @@ function Update()
 apt-get update > /dev/null 2>&1
 }
 
+function Apt()
+{ 
+apt-get install
+}
+
+
 
 sleep ".01"
 prg_bar 30 1
-Update()
+Update
 prg_bar 30 10
-
-
-
-Flex3beta
+Apt Flex3beta
+prg_bar 30 11
 adv-cmds
+prg_bar 30 12
 apt-key
 apt1.4
 apt7
