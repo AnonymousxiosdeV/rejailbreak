@@ -124,8 +124,9 @@ main() {
     setup_scroll_area
     draw_progress_bar 1
     apt-get -y update >/dev/null 2>&1
-    draw_progress_bar 5
     wait
+    draw_progress_bar 5
+    
    
  COUNTER=5
     for a in "${Array[@]}";
