@@ -73,22 +73,10 @@ prg_bar 30 1
 Update
 prg_bar 30 5
 
-# Counter=10
-# while [ $Counter -lt 100 ];
-# do 
-# for a in "${Array[@]}" 
-# sleep ".001"
-# echo "$a" >>/dev/null 2>&1
-# sleep ".001"
-#
-# let Counter=Counter+1
-# done
-# done
-
 COUNTER=5
 for a in "${Array[@]}";
 do
-apt -yq $a >/dev/null 2>&1
+apt -yq install $a >/dev/null 2>&1
 wait
 let COUNTER=COUNTER+1
 prg_bar 30 $COUNTER
@@ -106,4 +94,4 @@ echo "[*] Running  Respring"
 sleep "2"
 killall -9 SpringBoard
 
-EOF
+exit 0
