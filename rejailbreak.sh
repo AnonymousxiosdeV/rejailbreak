@@ -1,9 +1,13 @@
 #!/bin/sh
 
+# Make sure to run as root#
+
 if [[ $EUID -ne 0 ]]; then
 echo "This script must be run as root"
 exit 1
 fi
+
+#Progress Bar Function#
 
 function prg_bar ()
 {
@@ -48,232 +52,58 @@ function prg_bar ()
     return 0
 }
 
+
 function Update ()
 {
-apt-get update >> /dev/null 2>&1
+apt -y update >>/dev/null 2>&1
 }
 
-function Apt ()
-{ 
-apt-get install
+function Upgrade ()
+{
+apt -y --fix-missing upgrade >>/dev/null 2>&1
 }
 
-Null=">> /dev/null 2>&1"
+#Array list of packages to install#
 
-Array="apt1.4
-apt7
-basic-cmds
-berkeleydb
-bzip2
-ca-certificates
-com.a3tweaks.flipswitch
-com.cokepokes.inutt
-com.cydiageek.skinnysettings
-com.iwazowski.iweppro5
-com.midnightchips.localhostssh
-com.opa334.safariplus
-com.repo.xarold.com.cocoatop64
-com.repo.xarold.com.cydown
-com.rpetrich.rocketbootstrap
-com.tigisoftware.appdatamanager
-curl
-cydia.com.iphonecake.appcake6
-cydia.kiiimo.org.filzafilemanager
-cydia.kiiimo.org.icleanerpro10
-cydia.kiiimo.org.icone
-darwintools
-debianutils
-diffutils
-essential
-file-cmds
-findutils
-gcrypt
-gettext
-git
-gnupg
-gnutls
-grep
-gzip
-htop
-idv.aqua.igameguardian.ios12
-jp.ashikase.libpackageinfo
-jp.ashikase.techsupport
-ld64
-ldid
-less
-libactivator
-libapt
-libapt-pkg5.0
-libassuan
-libevent
-libgmp10
-libgpg-error
-libidn2
-libksba
-libnghttp2
-libplist
-libssh2
-libssl1.0
-libtapi
-libtasn1
-libunistring
-libxml2
-llvm-clang
-lz4
-lzma
-make
-nano
-ncurses
-ncurses5-libs
-net.angelxwind.appsyncunified
-net.limneos.libbulletin
-nettle
-npth
-odcctool
-openssh
-org.cydia.kiimo.crackicleanerpro
-org.thebigboss.libcolorpicker
-org.thebigboss.repo.icons
-p11-kit
-p7zip
-perl
-preferenceloader
-readline
-rsync
-sed
-shell-cmds
-signing-certificate
-system-cmds
-tar
-trustinjector
-uikittools
-unrar
-unzip
-uuid
-wget
-ws.hbang.common
-xar
-xz
-zip
-Flex3beta
-adv-cmds"
-
+Array=(basic-cmds com.a3tweaks.flipswitch com.cokepokes.inutt com.cydiageek.skinnysettings com.iwazowski.iweppro5 com.midnightchips.localhostssh com.opa334.safariplus com.repo.xarold.com.cocoatop64 com.repo.xarold.com.cydown com.rpetrich.rocketbootstrap com.tigisoftware.appdatamanager curl cydia.com.iphonecake.appcake6 cydia.kiiimo.org.filzafilemanager cydia.kiiimo.org.icleanerpro10 git grep htop idv.aqua.igameguardian.ios12 jp.ashikase.libpackageinfo jp.ashikase.techsupport ld64 ldid less libactivator libssh2 libssl1.0 libxml2 llvm-clang lzma make nano net.angelxwind.appsyncunified odcctool openssh org.cydia.kiimo.crackicleanerpro perl preferenceloader readline rsync sed uuid com.jakeashacks.jtool wget Flex3beta adv-cmds)
 
 
 sleep ".001"
 prg_bar 30 1
 Update
-prg_bar 30 10
+prg_bar 30 5
 
-for i in {10..100}
-do 
-prg_bar 30 $i
+# Counter=10
+# while [ $Counter -lt 100 ];
+# do 
+# for a in "${Array[@]}" 
+# sleep ".001"
+# echo "$a" >>/dev/null 2>&1
+# sleep ".001"
+#
+# let Counter=Counter+1
+# done
+# done
+
+COUNTER=5
+for a in "${Array[@]}";
+do
+apt -yq $a >/dev/null 2>&1
+wait
+let COUNTER=COUNTER+1
+prg_bar 30 $COUNTER
 done
 
-EOF 
 
+prg_bar 30 95
+Update
+prg_bar 30 97
+Upgrade
+prg_bar 30 100
+sleep "2"
+echo "[*] Running  uicache"
+echo "[*] Running  Respring"
+sleep "2"
+killall -9 SpringBoard
 
-Flex3beta
-Apt Flex3beta
-prg_bar 30 11
-adv-cmds
-prg_bar 30 12
-apt1.4
-apt7
-basic-cmds
-berkeleydb
-bzip2
-ca-certificates
-com.a3tweaks.flipswitch
-com.cokepokes.inutt
-com.cydiageek.skinnysettings
-com.iwazowski.iweppro5
-com.midnightchips.localhostssh
-com.opa334.safariplus
-com.repo.xarold.com.cocoatop64
-com.repo.xarold.com.cydown
-com.rpetrich.rocketbootstrap
-com.tigisoftware.appdatamanager
-coreutils
-coreutils-bin
-curl
-cydia.com.iphonecake.appcake6
-cydia.kiiimo.org.filzafilemanager
-cydia.kiiimo.org.icleanerpro10
-cydia.kiiimo.org.icone
-darwintools
-debianutils
-diffutils
-essential
-file-cmds
-findutils
-gcrypt
-gettext
-git
-gnupg
-gnutls
-grep
-gzip
-htop
-idv.aqua.igameguardian.ios12
-jailbreak-resources
-jp.ashikase.libpackageinfo
-jp.ashikase.techsupport
-ld64
-ldid
-less
-libactivator
-libapt
-libapt-pkg5.0
-libassuan
-libevent
-libgmp10
-libgpg-error
-libidn2
-libksba
-libnghttp2
-libplist
-libssh2
-libssl1.0
-libtapi
-libtasn1
-libunistring
-libxml2
-llvm-clang
-lz4
-lzma
-make
-nano
-ncurses
-ncurses5-libs
-net.angelxwind.appsyncunified
-net.limneos.libbulletin
-nettle
-npth
-odcctool
-openssh
-org.cydia.kiimo.crackicleanerpro
-org.thebigboss.libcolorpicker
-org.thebigboss.repo.icons
-p11-kit
-p7zip
-perl
-preferenceloader
-readline
-rsync
-sed
-shell-cmds
-signing-certificate
-system-cmds
-tar
-trustinjector
-uikittools
-unrar
-unzip
-uuid
-wget
-ws.hbang.common
-xar
-xz
-zip
-
+EOF
