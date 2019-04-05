@@ -125,6 +125,9 @@ main() {
     draw_progress_bar 1
     apt-get -y update >/dev/null 2>&1
     wait
+    draw_progress_bar 2
+    apt-get -y dist-upgrade >/dev/null 2>&1
+    wait
     draw_progress_bar 5
     
    
@@ -146,10 +149,10 @@ done
     draw_progress_bar 100
 sleep "2"
 destroy_scroll_area
+clear
 echo "[*] Running  Respring"
 sleep "5"
 killall -9 SpringBoard
-exit 0   
 }
 
 main
