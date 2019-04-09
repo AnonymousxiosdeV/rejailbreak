@@ -25,7 +25,6 @@ setup_scroll_area() {
 
     lines=$(tput lines)
     let lines=$lines-1
-    # Scroll down a bit to avoid visual glitch when the screen area shrinks by one row
     echo -en "\n"
 
     echo -en "$CODE_SAVE_CURSOR"
