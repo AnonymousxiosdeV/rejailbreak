@@ -129,7 +129,9 @@ main() {
     draw_progress_bar 1
     apt-get -y update >/dev/null 2>&1
     wait
-    draw_progress_bar 5
+    draw_progress_bar 3
+    apt-get -y upgrade >/dev/nukl 2>&1
+    wait
    
  COUNTER=5
     for a in "${Array[@]}";
