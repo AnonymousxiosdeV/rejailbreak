@@ -126,14 +126,17 @@ main() {
     enable_trapping
     setup_scroll_area
     draw_progress_bar 1
+    sleep "1"
     block_progress_bar 2
     apt-get -y update >/dev/null 2>&1
     wait
     draw_progress_bar 5
+    sleep "1"
     block_progress_bar 6
     apt-get -y upgrade >/dev/null 2>&1
     wait
     draw_progress_bar 10
+    sleep "1"
    
  COUNTER=10
     for a in "${Array[@]}";
@@ -143,25 +146,33 @@ main() {
     wait
     let COUNTER=COUNTER+1
     draw_progress_bar $COUNTER
+    sleep "1"
 done
     block_progress_bar 66
     apt-get -y update >/dev/null 2>&1
     wait
     draw_progress_bar 79
+    sleep "1"
     block_progress_bar 80
     apt-get -y --fix-missing upgrade >/dev/null 2>&1
     wait
     draw_progress_bar 89
+    sleep "1"
     block_progress_bar 90
     apt-get -y dist-upgrade >/dev/null 2>&1
     wait
     draw_progress_bar 94
+    sleep "1"
     block_progress_bar 95
     uicache
     draw_progress_bar 96
+    sleep "1"
     draw_progress_bar 97
+    sleep "1"
     draw_progress_bar 98
+    sleep "1"
     draw_progress_bar 99
+    sleep "1"
     draw_progress_bar 100
 sleep "2"
 destroy_scroll_area
