@@ -126,26 +126,33 @@ main() {
     enable_trapping
     setup_scroll_area
     draw_progress_bar 1
+    block_progress_bar 2
     apt-get -y update >/dev/null 2>&1
     wait
     draw_progress_bar 3
-    apt-get -y upgrade >/dev/nukl 2>&1
+    block_progress_bar 4
+    apt-get -y upgrade >/dev/null 2>&1
     wait
+    draw_progress_bar 5
    
  COUNTER=5
     for a in "${Array[@]}";
     do
+    block_progress_bar $COUNTER
     apt-get -y --allow-unauthenticated install $a >/dev/null 2>&1
     wait
     let COUNTER=COUNTER+1
     draw_progress_bar $COUNTER
 done
+    block_progress_bar 95
     apt-get -y update >/dev/null 2>&1
     wait
-    draw_progress_bar 95
+    draw_progress_bar 96
+    block_progress_bar 97
     apt-get -y --fix-missing upgrade >/dev/null 2>&1
     wait
-    draw_progress_bar 97
+    draw_progress_bar 98
+    block_progress_bar 99
     uicache
     draw_progress_bar 100
 sleep "2"
