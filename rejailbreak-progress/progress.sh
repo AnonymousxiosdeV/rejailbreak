@@ -88,27 +88,25 @@ main() {
  COUNTER=10
     for a in "${Array[@]}";
     do
+    let COUNTER=COUNTER+1
     progress $COUNTER "Downloading and installing $a"
     apt-get -y --allow-unauthenticated install $a >/dev/null 2>&1
     wait
-    let COUNTER=COUNTER+1
-    draw_progress_bar $COUNTER
-    sleep "1"
 done
-    block_progress_bar 66
+    progress 66
     apt-get -y update >/dev/null 2>&1
     wait
-    draw_progress_bar 79
+    progress 79
     sleep "1"
-    block_progress_bar 80
+    progress 80
     apt-get -y --fix-missing upgrade >/dev/null 2>&1
     wait
-    draw_progress_bar 89
+    progress 89
     sleep "1"
-    block_progress_bar 90
+    progress 90
     apt-get -y dist-upgrade >/dev/null 2>&1
     wait
-    draw_progress_bar 100
+    progress 100
 sleep "2"
 destroy_scroll_area
 echo "[*] Running  Respring"
