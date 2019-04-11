@@ -3,9 +3,6 @@ function delay()
     sleep 0.2;
 }
 
-#
-# Description : print out executing progress
-# 
 CURRENT_PROGRESS=0
 function progress()
 {
@@ -91,50 +88,51 @@ function progress()
 
 }
 
-Array=(com.mpg13.FlashBack com.a3tweaks.flipswitch com.chpwn.iconsupport com.cokepokes.inutt com.creaturecoding.cru com.cydiageek.skinnysettings com.exile90.icleanerpro com.ichitaso.powerselector11 com.iwazowski.iweppro5 com.jailbreak365.safeccmodules com.jakeashacks.jtool com.julioverne.cachewipe com.julioverne.flipconvert com.midnightchips.localhostssh com.opa334.ccsupport com.opa334.safariplus com.repo.xarold.com.betterccxi com.repo.xarold.com.cocoatop64 com.repo.xarold.com.cydown com.repo.xarold.com.lashack com.rpetrich.rocketbootstrap com.ruler225.videohud com.tigisoftware.appdatamanager cydia.com.iphonecake.appcake6 cydia.kiiimo.org.filzafilemanager cydia.kiiimo.org.icone cydia.net.angelxwind.appsyncunified idv.aqua.igameguardian.ios12 jp.ashikase.libpackageinfo jp.ashikase.techsupport net.limneos.oslog basic-cmds curl git grep htop ld64 ldid less libssh2 libssl1.0 libxml2 llvm-clang lzma make nano odcctools openssh perl preferenceloader readline rsync sed uuid adv-cmds)
+Array=(com.mpg13.FlashBack com.a3tweaks.flipswitch com.chpwn.iconsupport com.cokepokes.inutt com.creaturecoding.crux com.cydiageek.skinnysettings com.exile90.icleanerpro com.ichitaso.powerselector11 com.iwazowski.iweppro5 com.jailbreak365.safeccmodules com.jakeashacks.jtool com.julioverne.cachewipe com.julioverne.flipconvert com.midnightchips.localhostssh com.opa334.ccsupport com.opa334.safariplus com.repo.xarold.com.betterccxi com.repo.xarold.com.cocoatop64 com.repo.xarold.com.cydown com.repo.xarold.com.lashack com.rpetrich.rocketbootstrap com.ruler225.videohud com.tigisoftware.appdatamanager cydia.com.iphonecake.appcake6 cydia.kiiimo.org.filzafilemanager cydia.kiiimo.org.icone cydia.net.angelxwind.appsyncunified idv.aqua.igameguardian.ios12 jp.ashikase.libpackageinfo jp.ashikase.techsupport net.limneos.oslog basic-cmds curl git grep htop ld64 ldid less libssh2 libssl1.0 libxml2 llvm-clang lzma make nano odcctools openssh perl preferenceloader readline rsync sed uuid adv-cmds)
 
 main() {
 
-    clear
-    progress 1 "[*]Starting Up"
-    sleep 2
-    progress 2 "[*]Updating APT"
-    apt-get -y update >/dev/null 2>&1
-    wait
-    progress 5 "[*]Upgrading APT"
-    apt-get -y upgrade >/dev/null 2>&1
-    wait
-    progress 10 " "
+    clear;
+    echo "";
+    echo " [*] Rejailbreak ";
+    progress 1 " [*] Starting Up ";
+    sleep "1";
+    progress 2 " [*] Updating APT ";
+    apt-get -y update >/dev/null 2>&1;
+    wait;
+    progress 5 " [*] Upgrading APT ";
+    apt-get -y upgrade >/dev/null 2>&1;
+    wait;
+    progress 10 "";
     
    
  COUNTER=10
     for a in "${Array[@]}";
     do
     let COUNTER=COUNTER+1
-    progress $COUNTER "[*]Downloading & Installing $a"
-    apt-get -y --allow-unauthenticated install $a >/dev/null 2>&1
-    wait
+    progress $COUNTER " [*] Downloading $a ";
+    apt-get -y --allow-unauthenticated install $a >/dev/null 2>&1;
+    wait;
+    progress $COUNTER " [*] Installing $a ";
 done
-    progress 66 "[*]Updating APT"
-    apt-get -y update >/dev/null 2>&1
-    wait
-    progress 79 "[*]Done Updating"
-    sleep "1"
-    progress 80 "[*]Fixing & Upgrading Tweaks"
-    apt-get -y --fix-missing upgrade >/dev/null 2>&1
-    wait
-    progress 89 "[*]Done Fixing"
-    sleep "1"
-    progress 90 "[*]Updating & Upgrading Deps"
-    apt-get -y dist-upgrade >/dev/null 2>&1
-    wait
-    progress 100 "[*]Finished"
-sleep "2"
-destroy_scroll_area
-echo "[*] Running  Respring"
-sleep "5"
-killall -9 SpringBoard
-exit 0   
+    progress 66 " [*] Updating APT ";
+    apt-get -y update >/dev/null 2>&1;
+    wait;
+    progress 79 " [*] Done Updating ";
+    sleep "1";
+    progress 80 " [*] Fixing & Upgrading Tweaks ";
+    apt-get -y --fix-missing upgrade >/dev/null 2>&1;
+    wait;
+    progress 89 "[*] Done Fixing ";
+    sleep "1";
+    progress 90 "[*] Updating & Upgrading Deps ";
+    apt-get -y dist-upgrade >/dev/null 2>&1;
+    wait;
+    progress 100 " [*]Finished ";
+sleep "2";
+echo " [*] Running UICahe & Respring ";
+uicache;
+killall -9 SpringBoard;
 }
 
 main
