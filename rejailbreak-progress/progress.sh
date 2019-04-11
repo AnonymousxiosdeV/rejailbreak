@@ -74,23 +74,21 @@ Array=(com.mpg13.FlashBack com.a3tweaks.flipswitch com.chpwn.iconsupport com.cok
 main() {
 
     
-    draw_progress_bar 1
-    sleep "1"
-    block_progress_bar 2
+    progress 1 "starting"
+    sleep 2
+    progress 2 "updating apt"
     apt-get -y update >/dev/null 2>&1
     wait
-    draw_progress_bar 5
-    sleep "1"
-    block_progress_bar 6
+    progress 5 "upgrading apt"
     apt-get -y upgrade >/dev/null 2>&1
     wait
-    draw_progress_bar 10
-    sleep "1"
+    progress 10 "done"
+    
    
  COUNTER=10
     for a in "${Array[@]}";
     do
-    block_progress_bar $COUNTER
+    progress $COUNTER "Downloading and installing $a"
     apt-get -y --allow-unauthenticated install $a >/dev/null 2>&1
     wait
     let COUNTER=COUNTER+1
@@ -110,18 +108,6 @@ done
     block_progress_bar 90
     apt-get -y dist-upgrade >/dev/null 2>&1
     wait
-    draw_progress_bar 94
-    sleep "1"
-    block_progress_bar 95
-    uicache
-    draw_progress_bar 96
-    sleep "1"
-    draw_progress_bar 97
-    sleep "1"
-    draw_progress_bar 98
-    sleep "1"
-    draw_progress_bar 99
-    sleep "1"
     draw_progress_bar 100
 sleep "2"
 destroy_scroll_area
