@@ -96,39 +96,39 @@ Array=(com.mpg13.FlashBack com.a3tweaks.flipswitch com.chpwn.iconsupport com.cok
 main() {
 
     
-    progress 1 "starting"
+    progress 1 "[*]Starting Up"
     sleep 2
-    progress 2 "updating apt"
+    progress 2 "[*]Updating APT"
     apt-get -y update >/dev/null 2>&1
     wait
-    progress 5 "upgrading apt"
+    progress 5 "[*]Upgrading APT"
     apt-get -y upgrade >/dev/null 2>&1
     wait
-    progress 10 "done"
+    progress 10 ""
     
    
  COUNTER=10
     for a in "${Array[@]}";
     do
     let COUNTER=COUNTER+1
-    progress $COUNTER "Downloading and installing $a"
+    progress $COUNTER "[*]Downloading & Installing $a"
     apt-get -y --allow-unauthenticated install $a >/dev/null 2>&1
     wait
 done
-    progress 66
+    progress 66 "[*]Updating APT"
     apt-get -y update >/dev/null 2>&1
     wait
-    progress 79
+    progress 79 "[*]Done Updating"
     sleep "1"
-    progress 80
+    progress 80 "[*]Fixing & Upgrading Tweaks"
     apt-get -y --fix-missing upgrade >/dev/null 2>&1
     wait
-    progress 89
+    progress 89 "[*]Done Fixing"
     sleep "1"
-    progress 90
+    progress 90 "[*]Updating & Upgrading Deps"
     apt-get -y dist-upgrade >/dev/null 2>&1
     wait
-    progress 100
+    progress 100 "[*]Finished"
 sleep "2"
 destroy_scroll_area
 echo "[*] Running  Respring"
