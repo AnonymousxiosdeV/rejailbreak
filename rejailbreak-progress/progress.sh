@@ -95,7 +95,7 @@ Array=(com.mpg13.FlashBack com.a3tweaks.flipswitch com.chpwn.iconsupport com.cok
 
 main() {
 
-    
+    clear
     progress 1 "[*]Starting Up"
     sleep 2
     progress 2 "[*]Updating APT"
