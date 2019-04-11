@@ -104,7 +104,7 @@ main() {
     progress 5 "[*]Upgrading APT"
     apt-get -y upgrade >/dev/null 2>&1
     wait
-    progress 10 ""
+    progress 10 " "
     
    
  COUNTER=10
