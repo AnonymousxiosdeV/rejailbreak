@@ -93,94 +93,95 @@ Array=(com.mpg13.FlashBack com.a3tweaks.flipswitch com.chpwn.iconsupport com.cok
 main() {
 
     clear;
-    echo "";
-    echo " [*] Rejailbreak ";
-    progress 1 " [*] Starting Up ";
-    sleep "1";
-    progress 2 " [*] Updating APT ";
-    apt-get -y update >/dev/null 2>&1;
-    wait;
-    progress 5 " [*] Upgrading APT ";
-    apt-get -y upgrade >/dev/null 2>&1;
-    wait;
-    progress 10 "";
+    echo ""
+    echo " [*] Rejailbreak "
+    progress 1 " [*] Starting Up "
+    sleep "1"
+    progress 2 " [*] Updating APT "
+    apt-get -y update >/dev/null 2>&1
+    wait
+    progress 5 " [*] Upgrading APT "
+    apt-get -y upgrade >/dev/null 2>&1
+    wait
+    progress 10 ""
     
    
  COUNTER=10
-    for a in "${Array[@]}";
+    for a in "${Array[@]}"
     do
     let COUNTER=COUNTER+1
-    progress $COUNTER " [*] Downloading $a ";
-    apt-get -y --allow-unauthenticated install $a >/dev/null 2>&1;
-    wait;
-    progress $COUNTER " [*] Installing $a ";
+    progress $COUNTER " [*] Downloading $a "
+    apt-get -y --allow-unauthenticated install $a >/dev/null 2>&1
+    wait
+    progress $COUNTER " [*] Installing $a "
 done
-    progress 66 " [*] Updating APT ";
-    apt-get -y update >/dev/null 2>&1;
-    wait;
-    progress 79 " [*] Done Updating ";
-    sleep "1";
-    progress 80 " [*] Fixing & Upgrading Tweaks ";
-    apt-get -y --fix-missing upgrade >/dev/null 2>&1;
-    wait;
-    progress 89 "[*] Done Fixing ";
-    sleep "1";
-    progress 90 "[*] Updating & Upgrading Deps ";
-    apt-get -y dist-upgrade >/dev/null 2>&1;
-    wait;
-    progress 100 " [*]Finished ";
-sleep "2";
-echo " [*] Running UICahe & Respring ";
-uicache;
-killall -9 SpringBoard;
+    progress 66 " [*] Updating APT "
+    apt-get -y update >/dev/null 2>&1
+    wait
+    progress 79 " [*] Done Updating "
+    sleep "1"
+    progress 80 " [*] Fixing & Upgrading Tweaks "
+    apt-get -y --fix-missing upgrade >/dev/null 2>&1
+    wait
+    progress 89 "[*] Done Fixing "
+    sleep "1"
+    progress 90 "[*] Updating & Upgrading Deps "
+    apt-get -y dist-upgrade >/dev/null 2>&1
+    wait
+    progress 100 " [*]Finished "
+sleep "2"
+echo " [*] Running UICahe & Respring "
+uicache
+killall -9 SpringBoard
 }
 
 main_temp() {
 
-    clear;
-    echo "";
-    echo " [*] Rejailbreak ";
-    progress 1 " [*] Starting Up ";
-    sleep "1";
-    progress 2 " [*] Updating APT ";
-    apt-get -y update >>/tmp/rejailbreak.txt;
-    wait;
-    progress 5 " [*] Upgrading APT ";
-    apt-get -y upgrade >>/tmp/rejailbreak.txt;
-    wait;
-    progress 10 "";
+    clear
+    echo ""
+    echo " [*] Rejailbreak "
+    progress 1 " [*] Starting Up "
+    sleep "1"
+    progress 2 " [*] Updating APT "
+    apt-get -y update >>/tmp/rejailbreak.txt
+    wait
+    progress 5 " [*] Upgrading APT "
+    apt-get -y upgrade >>/tmp/rejailbreak.txt
+    wait
+    progress 10 ""
     
    
  COUNTER=10
-    for a in "${Array[@]}";
+    for a in "${Array[@]}"
     do
     let COUNTER=COUNTER+1
-    progress $COUNTER " [*] Downloading $a ";
-    apt-get -y --allow-unauthenticated install $a >>/tmp/rejailbreak.txt;
-    wait;
-    progress $COUNTER " [*] Installing $a ";
+    progress $COUNTER " [*] Downloading $a "
+    apt-get -y --allow-unauthenticated install $a >>/tmp/rejailbreak.txt
+    wait
+    progress $COUNTER " [*] Installing $a "
 done
-    progress 66 " [*] Updating APT ";
-    apt-get -y update >>/tmp/rejailbreak.txt;
-    wait;
-    progress 79 " [*] Done Updating ";
-    sleep "1";
-    progress 80 " [*] Fixing & Upgrading Tweaks ";
-    apt-get -y --fix-missing upgrade >>/tmp/rejailbreak.txt;
-    wait;
-    progress 89 "[*] Done Fixing ";
-    sleep "1";
-    progress 90 "[*] Updating & Upgrading Deps ";
-    apt-get -y dist-upgrade >>/tmp/rejailbreak.txt;
-    wait;
-    progress 100 " [*]Finished ";
-sleep "2";
+    progress 66 " [*] Updating APT "
+    apt-get -y update >>/tmp/rejailbreak.txt
+    wait
+    progress 79 " [*] Done Updating "
+    sleep "1"
+    progress 80 " [*] Fixing & Upgrading Tweaks "
+    apt-get -y --fix-missing upgrade >>/tmp/rejailbreak.txt
+    wait
+    progress 89 "[*] Done Fixing "
+    sleep "1"
+    progress 90 "[*] Updating & Upgrading Deps "
+    apt-get -y dist-upgrade >>/tmp/rejailbreak.txt
+    wait
+    progress 100 " [*]Finished "
+sleep "2"
 cat /tmp/rejailbreak.txt
 }
 
 
-if ("$1" == "-temp"); then
-main_temp;
+if ("$1" == "-temp")
+then
+main_temp
 else
-main;
+main
 fi
