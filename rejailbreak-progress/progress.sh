@@ -94,16 +94,13 @@ Array=(com.mpg13.FlashBack com.a3tweaks.flipswitch com.chpwn.iconsupport com.cok
 
 function main() {
 
-    clear;
-    echo ""
-    echo ""
-    echo "" 
-    progress 1 " [*] Starting Up                  "
+    clear 
+    progress 1 " [*]Starting Up                  "
     sleep "1"
-    progress 2 " [*] Updating APT                  "
+    progress 2 " [*]Updating APT                  "
     apt-get -y update >/dev/null 2>&1
     wait
-    progress 5 " [*] Upgrading APT                  "
+    progress 5 " [*]Upgrading APT                  "
     apt-get -y upgrade >/dev/null 2>&1
     wait
     progress 10 ""
@@ -141,9 +138,6 @@ killall -9 SpringBoard
 function temp() {
 
     clear
-    echo ""
-    echo ""
-    echo ""
     progress 1 " [*]Starting Up                  "
     sleep "1"
     progress 2 " [*]Updating APT                  "
