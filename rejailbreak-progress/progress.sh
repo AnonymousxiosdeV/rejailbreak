@@ -130,7 +130,7 @@ done
     wait
     progress 100 " [*]Finished                  "
 sleep "2"
-echo " [*]Running UICahe & Respring                  "
+echo " [*]Running uicache & Respring                  "
 uicache
 killall -9 SpringBoard
 }
@@ -141,7 +141,7 @@ function temp() {
     progress 1 " [*]Starting Up                  "
     sleep "1"
     progress 2 " [*]Updating APT                  "
-    apt-get -y update >/tmp/rejailbreak.txt
+    apt-get -y --fix-missing update >/tmp/rejailbreak.txt
     wait
     progress 5 " [*]Upgrading APT                  "
     apt-get -y upgrade >>/tmp/rejailbreak.txt
@@ -161,12 +161,12 @@ function temp() {
     sleep "1"
 done
     progress 66 " [*]Updating APT                  "
-    apt-get -y update >>/tmp/rejailbreak.txt
+    apt-get -y --fix-missing update >>/tmp/rejailbreak.txt
     wait
     progress 79 " [*]Done Updating                  "
     sleep "1"
     progress 80 " [*]Fixing & Upgrading Tweaks                  "
-    apt-get -y --fix-missing upgrade >>/tmp/rejailbreak.txt
+    apt-get -y upgrade >>/tmp/rejailbreak.txt
     wait
     progress 89 " [*]Done Fixing                  "
     sleep "1"
@@ -178,4 +178,8 @@ sleep "2"
 cat /tmp/rejailbreak.txt
 }
 
+    if [ $1 != "" ]; then
+ temp
+    else 
  main
+ fi
