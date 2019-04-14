@@ -41,7 +41,7 @@ function progress()
     if [ $CURRENT_PROGRESS -le 27 -a $PARAM_PROGRESS -ge 27 ]; then echo -ne "[*] Progress[######.......................] (27%) $PARAM_PHASE \r"  ; delay; fi;
     if [ $CURRENT_PROGRESS -le 28 -a $PARAM_PROGRESS -ge 28 ]; then echo -ne "[*] Progress[######.......................] (28%) $PARAM_PHASE \r"  ; delay; fi;
     if [ $CURRENT_PROGRESS -le 29 -a $PARAM_PROGRESS -ge 29 ]; then echo -ne "[*] Progress[######.......................] (29%) $PARAM_PHASE \r"  ; delay; fi;
-    if [ $CURRENT_PROGRESS -le 30 -a $PARAM_PROGRESS -ge 30 ]; then echo -ne "[*] Rejailbreak Progress[#######......................] (30%) $PARAM_PHASE \r"  ; delay; fi;
+    if [ $CURRENT_PROGRESS -le 30 -a $PARAM_PROGRESS -ge 30 ]; then echo -ne "[*] Progress[#######......................] (30%) $PARAM_PHASE \r"  ; delay; fi;
     if [ $CURRENT_PROGRESS -le 31 -a $PARAM_PROGRESS -ge 31 ]; then echo -ne "[*] Progress[#######......................] (31%) $PARAM_PHASE \r"  ; delay; fi;
     if [ $CURRENT_PROGRESS -le 32 -a $PARAM_PROGRESS -ge 32 ]; then echo -ne "[*] Progress[#######......................] (32%) $PARAM_PHASE \r"  ; delay; fi;
     if [ $CURRENT_PROGRESS -le 33 -a $PARAM_PROGRESS -ge 33 ]; then echo -ne "[*] Progress[#######......................] (33%) $PARAM_PHASE \r"  ; delay; fi;
@@ -79,7 +79,7 @@ function progress()
     if [ $CURRENT_PROGRESS -le 65 -a $PARAM_PROGRESS -ge 65 ]; then echo -ne "[*] Progress[###############..............] (65%) $PARAM_PHASE \r"  ; delay; fi;
     if [ $CURRENT_PROGRESS -le 66 -a $PARAM_PROGRESS -ge 66 ]; then echo -ne "[*] Progress[###############..............] (66%) $PARAM_PHASE \r"  ; delay; fi;
     if [ $CURRENT_PROGRESS -le 70 -a $PARAM_PROGRESS -ge 70 ]; then echo -ne "[*] Progress[#################............] (70%) $PARAM_PHASE \r"  ; delay; fi;
-    if [ $CURRENT_PROGRESS -le 75 -a $PARAM_PROGRESS -ge 75 ]; then echo -ne "[*] Rejailbreak Progress[###################..........] (75%) $PARAM_PHASE \r"  ; delay; fi;
+    if [ $CURRENT_PROGRESS -le 75 -a $PARAM_PROGRESS -ge 75 ]; then echo -ne "[*] Progress[###################..........] (75%) $PARAM_PHASE \r"  ; delay; fi;
     if [ $CURRENT_PROGRESS -le 79 -a $PARAM_PROGRESS -ge 79 ]; then echo -ne "[*] Progress[###################..........] (79%) $PARAM_PHASE \r"  ; delay; fi;
     if [ $CURRENT_PROGRESS -le 80 -a $PARAM_PROGRESS -ge 80 ]; then echo -ne "[*] Progress[######################.......] (80%) $PARAM_PHASE \r"  ; delay; fi;
     if [ $CURRENT_PROGRESS -le 85 -a $PARAM_PROGRESS -ge 85 ]; then echo -ne "[*] Progress[#########################....] (85%) $PARAM_PHASE \r"  ; delay; fi;
@@ -178,14 +178,4 @@ sleep "2"
 cat /tmp/rejailbreak.txt
 }
 
-if [[ $EUID -ne 0 ]]; then
-    echo "This script must be run as root"
-    exit 1
-fi
-
-if ["$1" == "-temp"];
-then
-    temp
-else
-    main
-fi
+ main
